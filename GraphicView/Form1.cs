@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FindAssocExe;
 
 namespace GraphicView
 {
@@ -32,7 +33,21 @@ namespace GraphicView
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //pictureBox1.Image = Image.FromFile(@"C:\Users\tanakken\Pictures\HSC_M31.jpg");
+            var cmd = System.Environment.GetCommandLineArgs()[1];
+            ZipFileLoader( cmd );
+            if (zipList == null || zipList.Count <= 0)
+            {
+                // 既定の方法で開く
+                var proc = System.Diagnostics.Process.Start(cmd);
+                var procName = Path.GetFileName(Path.GetExtension(cmd).FindAssociatedExecutable()).ToLower();
+                var myProcName = Path.GetFileName(System.Environment.GetCommandLineArgs()[0]).ToLower();
+                if (procName == myProcName)
+                {
+                    proc.Kill();
+                }
+                Close();
+                return;
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,6 +67,10 @@ namespace GraphicView
             {
                 zipFileName = fileName;
                 zipList = zipArc.Entries.Where(ent => ActiveExt.Contains(Path.GetExtension(ent.Name).ToLower())).ToList();
+                if (zipList == null || zipList.Count <= 0)
+                {
+                    return;
+                }
                 zipView(++index);
             }
         }
