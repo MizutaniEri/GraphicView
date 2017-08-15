@@ -409,6 +409,26 @@ namespace GraphicView
             {
                 beforeImageView();
             }
+            if (e.KeyCode == Keys.Up)
+            {
+                this.AutoScrollPosition = new Point(this.AutoScrollPosition.X, -this.AutoScrollPosition.Y - 100);
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                this.AutoScrollPosition = new Point(this.AutoScrollPosition.X, -this.AutoScrollPosition.Y + 100);
+            }
+            else if (e.KeyCode == Keys.PageUp)
+            {
+                this.AutoScrollPosition = new Point(this.AutoScrollPosition.X, -this.AutoScrollPosition.Y - 500);
+            }
+            else if (e.KeyCode == Keys.PageDown)
+            {
+                this.AutoScrollPosition = new Point(this.AutoScrollPosition.X, -this.AutoScrollPosition.Y + 500);
+            }
+            else if (e.KeyCode == Keys.Home)
+            {
+                this.AutoScrollPosition = new Point(this.AutoScrollPosition.X, 0);
+            }
             else if (e.KeyCode == Keys.Escape)
             {
                 Close();
