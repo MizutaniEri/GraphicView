@@ -206,7 +206,8 @@ namespace GraphicView
             var result = form2.ShowDialog();
             if (result == DialogResult.OK)
             {
-                zipView(form2.selectImageIndex);
+                index = form2.selectImageIndex;
+                zipView(index);
                 fitScreensizeImageView();
             }
             form2.Dispose();
