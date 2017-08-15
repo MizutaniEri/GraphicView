@@ -37,15 +37,16 @@
             this.beforeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.imageListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.fitScreenSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.widthFitZoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
@@ -57,57 +58,74 @@
             this.fitScreenSizeToolStripMenuItem,
             this.widthFitZoomToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 170);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 184);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(179, 6);
             // 
             // nextToolStripMenuItem
             // 
             this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
-            this.nextToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.nextToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.nextToolStripMenuItem.Text = "Next image";
             this.nextToolStripMenuItem.Click += new System.EventHandler(this.nextToolStripMenuItem_Click);
             // 
             // beforeToolStripMenuItem
             // 
             this.beforeToolStripMenuItem.Name = "beforeToolStripMenuItem";
-            this.beforeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.beforeToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.beforeToolStripMenuItem.Text = "Before image";
             this.beforeToolStripMenuItem.Click += new System.EventHandler(this.beforeToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
             // 
             // imageListToolStripMenuItem
             // 
             this.imageListToolStripMenuItem.Name = "imageListToolStripMenuItem";
-            this.imageListToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.imageListToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.imageListToolStripMenuItem.Text = "Image List";
             this.imageListToolStripMenuItem.Click += new System.EventHandler(this.imageListToolStripMenuItem_Click);
+            // 
+            // fitScreenSizeToolStripMenuItem
+            // 
+            this.fitScreenSizeToolStripMenuItem.CheckOnClick = true;
+            this.fitScreenSizeToolStripMenuItem.Name = "fitScreenSizeToolStripMenuItem";
+            this.fitScreenSizeToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
+            this.fitScreenSizeToolStripMenuItem.Text = "Fit Screen Size";
+            this.fitScreenSizeToolStripMenuItem.Click += new System.EventHandler(this.fitScreenSizeToolStripMenuItem_Click);
+            // 
+            // widthFitZoomToolStripMenuItem
+            // 
+            this.widthFitZoomToolStripMenuItem.CheckOnClick = true;
+            this.widthFitZoomToolStripMenuItem.Name = "widthFitZoomToolStripMenuItem";
+            this.widthFitZoomToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
+            this.widthFitZoomToolStripMenuItem.Text = "Width Fit Zoom";
+            this.widthFitZoomToolStripMenuItem.Click += new System.EventHandler(this.widthFitZoomToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.ContextMenuStrip = this.contextMenuStrip1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(287, 266);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -116,32 +134,20 @@
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
-            // fitScreenSizeToolStripMenuItem
-            // 
-            this.fitScreenSizeToolStripMenuItem.CheckOnClick = true;
-            this.fitScreenSizeToolStripMenuItem.Name = "fitScreenSizeToolStripMenuItem";
-            this.fitScreenSizeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.fitScreenSizeToolStripMenuItem.Text = "Fit Screen Size";
-            this.fitScreenSizeToolStripMenuItem.Click += new System.EventHandler(this.fitScreenSizeToolStripMenuItem_Click);
-            // 
-            // widthFitZoomToolStripMenuItem
-            // 
-            this.widthFitZoomToolStripMenuItem.CheckOnClick = true;
-            this.widthFitZoomToolStripMenuItem.Name = "widthFitZoomToolStripMenuItem";
-            this.widthFitZoomToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.widthFitZoomToolStripMenuItem.Text = "Width Fit Zoom";
-            this.widthFitZoomToolStripMenuItem.Click += new System.EventHandler(this.widthFitZoomToolStripMenuItem_Click);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(297, 273);
+            this.ClientSize = new System.Drawing.Size(396, 341);
             this.Controls.Add(this.pictureBox1);
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -34,7 +34,7 @@ namespace GraphicView
         private void Form1_Load(object sender, EventArgs e)
         {
             var cmd = System.Environment.GetCommandLineArgs()[1];
-            ZipFileLoader( cmd );
+            ZipFileLoader(cmd);
             if (zipList == null || zipList.Count <= 0)
             {
                 // 既定の方法で開く
@@ -85,6 +85,7 @@ namespace GraphicView
                 ZipArchiveEntry e = a.GetEntry(imageFIleName);
                 var stream = e.Open();
                 pictureBox1.Image = GetZoomImageFromStream(stream);
+                this.AutoScrollPosition = new Point(0, 0);
             }
             Text = zipFileName + " (" + (index + 1) + "/" + zipList.Count + ") - " + zipList[index].Name;
         }
@@ -96,6 +97,11 @@ namespace GraphicView
 
         private void nextToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            nextImageView();
+        }
+
+        private void nextImageView()
+        {
             if ((index + 1) >= zipList.Count)
             {
                 index = 0;
@@ -105,9 +111,15 @@ namespace GraphicView
                 index++;
             }
             zipView(index);
+            fitScreensizeImageView();
         }
 
         private void beforeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            beforeImageView();
+        }
+
+        private void beforeImageView()
         {
             if ((index - 1) < 0)
             {
@@ -118,6 +130,7 @@ namespace GraphicView
                 index--;
             }
             zipView(index);
+            fitScreensizeImageView();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -194,6 +207,7 @@ namespace GraphicView
             if (result == DialogResult.OK)
             {
                 zipView(form2.selectImageIndex);
+                fitScreensizeImageView();
             }
             form2.Dispose();
             form2 = null;
@@ -205,14 +219,32 @@ namespace GraphicView
             {
                 widthFitZoomToolStripMenuItem.Checked = false;
             }
+            fitScreensizeImageView();
+        }
+
+        private void fitScreensizeImageView()
+        {
             if (fitScreenSizeToolStripMenuItem.Checked)
             {
                 screenFitZoom();
+            }
+            else if (widthFitZoomToolStripMenuItem.Checked)
+            {
+                ScreenFitWidthZoom();
             }
             else
             {
                 zipView(index);
             }
+        }
+
+        private void widthFitZoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fitScreenSizeToolStripMenuItem.Checked && widthFitZoomToolStripMenuItem.Checked)
+            {
+                widthFitZoomToolStripMenuItem.Checked = false;
+            }
+            fitScreensizeImageView();
         }
 
         private void screenFitZoom()
@@ -276,22 +308,6 @@ namespace GraphicView
             imageSize.Height = newY;
         }
 
-        private void widthFitZoomToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (fitScreenSizeToolStripMenuItem.Checked && widthFitZoomToolStripMenuItem.Checked)
-            {
-                widthFitZoomToolStripMenuItem.Checked = false;
-            }
-            if (widthFitZoomToolStripMenuItem.Checked)
-            {
-                ScreenFitWidthZoom();
-            }
-            else
-            {
-                zipView(index);
-            }
-        }
-
         private void ScreenFitWidthZoom()
         {
             var imageSize = new Size();
@@ -316,6 +332,11 @@ namespace GraphicView
             int RX = 0;
             int RY = 0;
 
+            if (imageX < imageY && imageX > screenX)
+            {
+                screenX -= SystemInformation.VerticalScrollBarWidth;
+            }
+
             // 画像の比率に沿った幅と高さ計算;
             RX = imageX * screenY / imageY;
             RY = imageY * screenX / imageX;
@@ -327,8 +348,8 @@ namespace GraphicView
             //}
             //else
             //{
-                newX = screenX;
-                newY = RY;
+            newX = screenX;
+            newY = RY;
             //}
             imageSize.Width = newX;
             imageSize.Height = newY;
@@ -375,6 +396,22 @@ namespace GraphicView
             exec = true;
             zipView(indexAdd);
             exec = false;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Right)
+            {
+                nextImageView();
+            }
+            else if (e.KeyCode == Keys.Left)
+            {
+                beforeImageView();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
         }
     }
 }
