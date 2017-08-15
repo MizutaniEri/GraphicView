@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>"Z:\Download\[Cool Brain %28Kitani Sai%29] ANGEL PAIN Extra 3 -LoveLove Scatology- [Digital].zip"</StartArguments>
+    <StartArguments>"V:\CG\一般コミック\君の名は。\%28C91%29 %28同人誌%29 [GRINP %28ねことうふ%29] おかしいお姉ちゃん %28君の名は。%29.zip"</StartArguments>
   </PropertyGroup>
 </Project>

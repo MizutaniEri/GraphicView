@@ -92,7 +92,40 @@ namespace GraphicView
 
         public static Image GetZoomImageFromStream(Stream fs)
         {
-            return Image.FromStream(fs, false, false);
+            var img = Image.FromStream(fs, false, false);
+            // Exif情報に基づく画像方向修正
+            var pitem = img.PropertyItems.Where(item => item.Id == 0x112 && item.Type == 3 && item.Value[0] != 1).FirstOrDefault();
+            if (pitem != null)
+            {
+                Debug.WriteLine("Exif id = [" + pitem.Id + "]" + " type=[" + pitem.Type + "]");
+                var rotate = RotateFlipType.RotateNoneFlipNone;
+                switch (pitem.Value[0])
+                {
+                    case 2:
+                        rotate = RotateFlipType.RotateNoneFlipX;
+                        break;
+                    case 3:
+                        rotate = RotateFlipType.Rotate180FlipNone;
+                        break;
+                    case 4:
+                        rotate = RotateFlipType.RotateNoneFlipY;
+                        break;
+                    case 5:
+                        rotate = RotateFlipType.Rotate270FlipX;
+                        break;
+                    case 6:
+                        rotate = RotateFlipType.Rotate90FlipNone;
+                        break;
+                    case 7:
+                        rotate = RotateFlipType.Rotate90FlipX;
+                        break;
+                    case 8:
+                        rotate = RotateFlipType.Rotate270FlipNone;
+                        break;
+                }
+                img.RotateFlip(rotate);
+            }
+            return (img);
         }
 
         private void nextToolStripMenuItem_Click(object sender, EventArgs e)
