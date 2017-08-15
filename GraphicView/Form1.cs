@@ -428,7 +428,7 @@ namespace GraphicView
                 return;
             }
             exec = true;
-            zipView(indexAdd);
+            zipView((index += indexAdd));
             exec = false;
         }
 
