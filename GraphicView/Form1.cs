@@ -87,7 +87,7 @@ namespace GraphicView
                 pictureBox1.Image = GetZoomImageFromStream(stream);
                 this.AutoScrollPosition = new Point(0, 0);
             }
-            Text = zipFileName + " (" + (index + 1) + "/" + zipList.Count + ") - " + zipList[index].Name;
+            Text = Path.GetFileName(zipFileName) + " (" + (index + 1) + "/" + zipList.Count + ") - " + zipList[index].Name;
         }
 
         public static Image GetZoomImageFromStream(Stream fs)
