@@ -66,7 +66,7 @@ namespace GraphicView
             var zipArc = ZipFile.OpenRead(fileName);
             {
                 zipFileName = fileName;
-                zipList = zipArc.Entries.Where(ent => ActiveExt.Contains(Path.GetExtension(ent.Name).ToLower())).ToList();
+                zipList = zipArc.Entries.Where(ent => ActiveExt.Contains(Path.GetExtension(ent.Name).ToLower())).OrderBy(s => new FileInfo(s.FullName), new NaturalFileSystemInfoCompare()).ToList();
                 if (zipList == null || zipList.Count <= 0)
                 {
                     return;
@@ -87,7 +87,7 @@ namespace GraphicView
                 pictureBox1.Image = GetZoomImageFromStream(stream);
                 this.AutoScrollPosition = new Point(0, 0);
             }
-            Text = Path.GetFileName(zipFileName) + " (" + (index + 1) + "/" + zipList.Count + ") - " + zipList[index].Name;
+            Text = Path.GetFileName(zipFileName) + " (" + (index + 1) + "/" + zipList.Count + ") - " + zipList[index].FullName;
         }
 
         public static Image GetZoomImageFromStream(Stream fs)
